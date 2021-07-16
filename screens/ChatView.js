@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, StatusBar ,Image,Dimensions,ScrollView,TextInput } from 'react-native';
 import { AntDesign,MaterialCommunityIcons  } from '@expo/vector-icons'; 
 const ChatView = () => {
-  const [text, onChangeText] = React.useState("Useless Text");
+  const [text, onChangeText] = React.useState();
  
   return (
     <View style={styles.container}>
