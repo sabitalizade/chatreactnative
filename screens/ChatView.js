@@ -1,14 +1,41 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar ,Image,Dimensions,ScrollView,TextInput } from 'react-native';
 import { AntDesign,MaterialCommunityIcons  } from '@expo/vector-icons'; 
+import { Link } from 'react-router-native';
 const ChatView = () => {
   const [text, onChangeText] = React.useState();
+  const [message, setMessage] = React.useState([
+   
+]);
+const messagesEndRef = React.useRef(null)
+const sendMessage=e=>{
+  setMessage([...message,{
+    author:1,
+    message:text
+  }])
+  onChangeText("")
+}
+
+
+// setInterval(() => {
+//   setMessage([...message,{
+//     author:0,
+//     message:"salam"
+//   }])
+// }, 5000);
+const scrollToBottom = () => {
+  messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+  
+  React.useEffect(() => {
+    scrollToBottom()
+}, [message])
  
   return (
     <View style={styles.container}>
         <StatusBar
         animated={true}
-        backgroundColor="#059DC0"
+        backgroundColor="#000"
         style="auto"
         // barStyle={statusBarStyle}
         // showHideTransition={statusBarTransition}
@@ -16,7 +43,9 @@ const ChatView = () => {
         />
         
       <View style={styles.topbar}>
+        <Link to="/">
       <AntDesign name="left" size={30} color="#fff" />
+        </Link>
       <Image
         source={require('../assets/sj.jpg')}
         // fadeDuration={0}
@@ -26,31 +55,29 @@ const ChatView = () => {
       </View>
       <View  style={styles.mainView}>
       <ScrollView>
-        <View style={styles.leftmessage}>
-            <Text>{text} </Text>
+
+{
+  message.map((item,id)=>(
+<View key={id} style={item.author==0 ? styles.leftmessage : styles.rightmessage} ref={messagesEndRef}>
+            <Text style={styles.messageText}>{item.message} </Text>
 
         </View>
-        <View style={styles.rightmessage}>
-            <Text>recieved Message dfdd ffffffffffff ffffffffffff ffffffffffff fffffffffffffffff ffffffffffffffff fffffffffffffffffff fffffffffffffffff fffffffffffffff fffffffffff </Text>
+  ))
+}
 
-        </View>
-        <View style={styles.leftmessage}>
-            <Text>{text} </Text>
 
-        </View>
-        <View style={styles.rightmessage}>
-            <Text>recieved Message dfdd ffffffffffff ffffffffffff ffffffffffff fffffffffffffffff ffffffffffffffff fffffffffffffffffff fffffffffffffffff fffffffffffffff fffffffffff </Text>
-
-        </View>
+        
+      
       
         </ScrollView>
         <View style={{flexDirection:"row"}}>
         <TextInput
         style={styles.input}
         onChangeText={onChangeText}
+        placeholder="Type message"
         value={text}
       />
-      <MaterialCommunityIcons name="send-circle-outline" size={50} color="black" />
+      <MaterialCommunityIcons name="send-circle-outline" size={50} color="black" onPress={sendMessage}/>
         </View>
       </View>
      
@@ -65,7 +92,7 @@ const styles = StyleSheet.create({
   },
   input:{
     flex:1,
-    backgroundColor:"#5885AF",
+    backgroundColor:"#444",
     borderRadius:20,
     marginLeft:5,    
     marginTop:5,    
@@ -73,7 +100,9 @@ const styles = StyleSheet.create({
     paddingHorizontal:10
   },
   leftmessage:{
-    backgroundColor:"#75E6DA",
+    backgroundColor:"#999",
+   
+    
     marginRight:20,
     marginLeft:5,
     marginBottom:5,
@@ -83,9 +112,13 @@ const styles = StyleSheet.create({
     borderTopLeftRadius:0
 
   },
+  messageText:{
+    color:"#fff",
+  },
   rightmessage:{
-    backgroundColor:"#75E6DA",
+    backgroundColor:"#666",
     marginRight:5,
+    flex:1,
     marginLeft:20,
     marginBottom:5,
     paddingVertical:5,
@@ -97,7 +130,7 @@ const styles = StyleSheet.create({
     // flex:1,
     flexDirection:"row",
     height:50,
-    backgroundColor:"#05445E",
+    backgroundColor:"#000",
     paddingHorizontal:3,
     alignItems:"center"
     
@@ -109,7 +142,7 @@ const styles = StyleSheet.create({
   },
   mainView:{
     flex:1,
-    backgroundColor:"#189AB4",
+    backgroundColor:"#333",
     paddingVertical:5
   //  justifyContent:"center"
   }

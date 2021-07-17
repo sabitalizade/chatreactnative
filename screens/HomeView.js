@@ -15,7 +15,7 @@ const HomeView = () => {
     <View style={{flex:1}}>
       <StatusBar
         animated={true}
-        backgroundColor="#059DC0"
+        backgroundColor="#000"
         style="auto"
         // barStyle={statusBarStyle}
         // showHideTransition={statusBarTransition}
@@ -26,8 +26,8 @@ const HomeView = () => {
        
           <View style={{flexDirection:"row"}}>
               <ScrollView horizontal showsVerticalScrollIndicator={false}
-  showsHorizontalScrollIndicator={false}>
-
+                      showsHorizontalScrollIndicator={false}>
+            <Link to="/stories">
             <View >
               <Image
                 source={require("../assets/sj.jpg")}
@@ -35,6 +35,8 @@ const HomeView = () => {
                 style={styles.storyImage}
                 />
             </View>
+                </Link>
+            <Link to="/stories">
             <View >
               <Image
                 source={require("../assets/sj.jpg")}
@@ -42,6 +44,8 @@ const HomeView = () => {
                 style={styles.storyImage}
                 />
             </View>
+                </Link>
+            <Link to="/stories">
             <View >
               <Image
                 source={require("../assets/sj.jpg")}
@@ -49,6 +53,8 @@ const HomeView = () => {
                 style={styles.storyImage}
                 />
             </View>
+                </Link>
+            <Link to="/stories">
             <View >
               <Image
                 source={require("../assets/sj.jpg")}
@@ -56,6 +62,8 @@ const HomeView = () => {
                 style={styles.storyImage}
                 />
             </View>
+                </Link>
+            <Link to="/stories">
             <View >
               <Image
                 source={require("../assets/sj.jpg")}
@@ -63,6 +71,8 @@ const HomeView = () => {
                 style={styles.storyImage}
                 />
             </View>
+                </Link>
+            <Link to="/stories">
             <View >
               <Image
                 source={require("../assets/sj.jpg")}
@@ -70,6 +80,8 @@ const HomeView = () => {
                 style={styles.storyImage}
                 />
             </View>
+                </Link>
+            <Link to="/stories">
             <View >
               <Image
                 source={require("../assets/sj.jpg")}
@@ -77,6 +89,8 @@ const HomeView = () => {
                 style={styles.storyImage}
                 />
             </View>
+                </Link>
+            <Link to="/stories">
             <View >
               <Image
                 source={require("../assets/sj.jpg")}
@@ -84,6 +98,8 @@ const HomeView = () => {
                 style={styles.storyImage}
                 />
             </View>
+                </Link>
+            <Link to="/stories">
             <View >
               <Image
                 source={require("../assets/sj.jpg")}
@@ -91,6 +107,8 @@ const HomeView = () => {
                 style={styles.storyImage}
                 />
             </View>
+                </Link>
+            <Link to="/stories">
             <View >
               <Image
                 source={require("../assets/sj.jpg")}
@@ -98,41 +116,8 @@ const HomeView = () => {
                 style={styles.storyImage}
                 />
             </View>
-            <View >
-              <Image
-                source={require("../assets/sj.jpg")}
-                // fadeDuration={0}
-                style={styles.storyImage}
-                />
-            </View>
-            <View >
-              <Image
-                source={require("../assets/sj.jpg")}
-                // fadeDuration={0}
-                style={styles.storyImage}
-                />
-            </View>
-            <View >
-              <Image
-                source={require("../assets/sj.jpg")}
-                // fadeDuration={0}
-                style={styles.storyImage}
-                />
-            </View>
-            <View >
-              <Image
-                source={require("../assets/sj.jpg")}
-                // fadeDuration={0}
-                style={styles.storyImage}
-                />
-            </View>
-            <View >
-              <Image
-                source={require("../assets/sj.jpg")}
-                // fadeDuration={0}
-                style={styles.storyImage}
-                />
-            </View>
+                </Link>
+            
            
                 </ScrollView>
           </View>
@@ -148,15 +133,16 @@ const HomeView = () => {
                 style={styles.ListItemImage}
                 />
                 {/* <View to="/chat"> */}
+                <Link to="/chat">
                 <View
-          to="/chat"
-          underlayColor="#f0f4f7"
-          style={styles.navItem}
-        >
+         
+       
+          >
       <Text style={styles.chatListItemName}>Scarlet Johansen</Text>
       <Text style={styles.chatListItemMessage}>Scarlet Johansen</Text>
 
                 </View>
+          </Link>
       </View>
          <View style={styles.chatListItem}>
          <Image
@@ -208,7 +194,7 @@ const styles = StyleSheet.create({
   chatList:{
       flex:1,
      
-      backgroundColor:"#0074B7",
+      backgroundColor:"#000",
       marginTop:20,
       borderTopRightRadius:30,
       borderTopLeftRadius:30

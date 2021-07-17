@@ -1,8 +1,9 @@
 import React from 'react';
-import { StatusBar, StyleSheet, Text, View } from "react-native";
-import { NativeRouter, Route, Link } from "react-router-native";
+import {  StyleSheet} from "react-native";
+import { NativeRouter, Route } from "react-router-native";
 import ChatView from './screens/ChatView';
 import HomeView from './screens/HomeView';
+import Stories from './screens/Stories';
 
 
 export default function App() {
@@ -41,6 +42,7 @@ export default function App() {
 
       <Route exact path="/" component={HomeView} />
       <Route path="/chat" component={ChatView} />
+      <Route path="/stories" component={Stories} />
       {/* <Route path="/topics" component={Topics} /> */}
     {/* </View> */}
   </NativeRouter>
