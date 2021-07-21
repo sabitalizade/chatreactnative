@@ -1,51 +1,25 @@
 import React from 'react';
 import {  StyleSheet} from "react-native";
-import { NativeRouter, Route } from "react-router-native";
+// import { NativeRouter, Route } from "react-router-native";
 import ChatView from './screens/ChatView';
 import HomeView from './screens/HomeView';
 import Stories from './screens/Stories';
 
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import LoginScreen from './screens/LoginScreen';
 
+const Stack = createStackNavigator();
 export default function App() {
-  
+  // const [message, setMessage] = React.useState([]);
+
  
   return (
-    <NativeRouter>
-       {/* <StatusBar
-        animated={true}
-        backgroundColor="#059DC0"
-        style="auto"
-        // barStyle={statusBarStyle}
-        // showHideTransition={statusBarTransition}
-        // hidden={hidden} 
-        />
-    <View style={styles.container}>
-      <View style={styles.nav}>
-        <Link to="/" underlayColor="#f0f4f7" style={styles.navItem}>
-          <Text>Home</Text>
-        </Link>
-        <Link
-          to="/chat"
-          underlayColor="#f0f4f7"
-          style={styles.navItem}
-        >
-          <Text>About</Text>
-        </Link>
-        <Link
-          to="/topics"
-          underlayColor="#f0f4f7"
-          style={styles.navItem}
-        >
-          <Text>Topics</Text>
-        </Link>
-      </View> */}
-
-      <Route exact path="/" component={HomeView} />
-      <Route path="/chat" component={ChatView} />
-      <Route path="/stories" component={Stories} />
-      {/* <Route path="/topics" component={Topics} /> */}
-    {/* </View> */}
-  </NativeRouter>
+    <NavigationContainer>
+<Stack.Navigator >
+<Stack.Screen name="Login" component={LoginScreen} />
+</Stack.Navigator>
+</NavigationContainer>
    
   );
 }
