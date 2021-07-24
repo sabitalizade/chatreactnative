@@ -4,11 +4,22 @@ import { View,  StyleSheet } from 'react-native'
 import { Input, Button } from 'react-native-elements'
 import { auth } from '../firebase'
 
-const RegisterScreen = () => {
+const RegisterScreen = ({navigation}) => {
+
     const [name, setName] = useState('');
-const [email, setEmail] = useState('');
-const [password, setPassword] = useState('');
-const [imageUrl, setImageUrl] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
+// React.useEffect(() => {
+// const unsubscribe = auth.onAuthStateChanged(function (user) {
+// if (user) {
+// navigation.replace('Chat');
+// } else {
+// // No user is signed in.
+// }
+// });
+// return unsubscribe;
+// }, [])
 const register = () => {
     auth.createUserWithEmailAndPassword(email, password)
     .then((userCredential) => {
@@ -20,6 +31,8 @@ const register = () => {
     }).catch(function (error) {
     alert(error.message)
     });
+
+    navigation.popToTop();
     // ...
     })
     .catch((error) => {

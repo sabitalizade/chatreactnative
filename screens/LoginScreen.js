@@ -1,9 +1,29 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Input, Button } from 'react-native-elements'
+import { auth } from '../firebase'
+
 const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
+React.useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(function (user) {
+    if (user) {
+    navigation.replace('Chat');
+    } else {
+        navigation.canGoBack() && navigation.popToTop();
+    }
+    });
+    return unsubscribe;
+    }, [])
+const signIn = () => {
+    auth.signInWithEmailAndPassword(email, password)
+    .catch((error) => {
+    var errorMessage = error.message;
+    alert(errorMessage)
+    });
+    }
+
 return (
 <View style={styles.container}>
 <Input
@@ -21,7 +41,7 @@ value={password}
 onChangeText={text => setPassword(text)}
 secureTextEntry
 />
-<Button title="sign in" style={styles.button} />
+<Button title="sign in" style={styles.button} onPress={signIn}/>
 <Button title="register" onPress={() => navigation.navigate('Register')} style={styles.button} />
 </View>
 )
